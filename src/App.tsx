@@ -1,9 +1,8 @@
-import { Header } from './components/Header/Header'
+import { Header } from '@/components/Header/Header'
 import { Footer } from './components/Footer/Footer'
-import { Sidebar } from './components/Sidebar/Sidebar'
 import './styles/index.css'
 import './styles/App.css'
-import { Card } from './components/Card'
+import { CardsList } from '@/components/CardsList'
 
 function App() {
   
@@ -19,12 +18,9 @@ function App() {
             <div className="content-main">
               <p className="content-text">Here you can manage your customers, view reports, and configure settings.</p>
               <div>
-                <Card />
+                <CardsList />
               </div>
             </div>
-          </div>
-          <div className="sidebar">
-            <Sidebar />
           </div>
         </div>
       </main>

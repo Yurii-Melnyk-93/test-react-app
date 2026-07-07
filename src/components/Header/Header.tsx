@@ -1,9 +1,15 @@
+import { HeaderMenu } from '@/components/HeaderMenu'
+import styles from './Header.module.scss'
+
 export function Header() {
   return (
-    <header className="header">
-      <div className="header-content">
-        <h1 className="header-title">My CRM</h1>
-        <p className="header-subtitle">Manage your customer relationships effectively</p>
+    <header className={styles.header}>
+      <div className={styles.headerContent}>
+        <h1 className={styles.headerTitle}>My CRM</h1>
+        <p className={styles.headerSubtitle}>Manage your customer relationships effectively</p>
+      </div>
+      <div className={styles.headerActions}>
+        <HeaderMenu />
       </div>
     </header>
   )
