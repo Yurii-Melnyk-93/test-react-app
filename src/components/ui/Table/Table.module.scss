@@ -1,0 +1,62 @@
+@use '@/styles/mixins' as *;
+
+.wrapper {
+  @include card;
+
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.headerCell,
+.cell {
+  padding: var(--space-3) var(--space-4);
+}
+
+.headerCell {
+  background: rgba(20, 30, 55, 0.03);
+  border-bottom: 1px solid var(--color-border);
+
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.cell {
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: middle;
+}
+
+tbody tr:last-child .cell {
+  border-bottom: none;
+}
+
+.interactiveRow {
+  cursor: pointer;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background: rgba(20, 30, 55, 0.03);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+    outline-offset: -2px;
+  }
+}

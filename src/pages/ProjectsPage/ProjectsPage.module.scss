@@ -1,0 +1,36 @@
+@use '@/styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+}
+
+.name {
+  font-weight: 500;
+}
+
+.description {
+  @include truncate;
+
+  display: block;
+  max-width: 320px;
+  color: var(--color-text-muted);
+}
