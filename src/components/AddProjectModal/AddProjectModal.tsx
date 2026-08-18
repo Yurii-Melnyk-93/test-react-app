@@ -2,7 +2,7 @@
 import styles from './AddProjectModal.module.scss'
 import { Modal } from '@/components/Modal';
 import { ProjectForm } from '../ProjectForm';
-import type { ProjectFormValues } from '@/types/ProjectForm';
+import type { ProjectFormValues } from '@/types/Project';
 
 
 interface AddProjectModalProps {

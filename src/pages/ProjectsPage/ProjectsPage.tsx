@@ -3,8 +3,8 @@ import { AddProjectModal } from "@/components/AddProjectModal";
 import { ProjectList } from "@/components/ProjectList"
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { selectProjects } from "@/store/selectors/projectSelectors";
-import { addProject } from "@/store/slices/projectSlice";
-import type { ProjectFormValues } from "@/types/ProjectForm";
+import { addProject } from "@/store/slices/projectsSlice";
+import type { ProjectFormValues } from "@/types/Project";
 import { useState } from "react";
 
 
