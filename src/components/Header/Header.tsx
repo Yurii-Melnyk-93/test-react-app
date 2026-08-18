@@ -1,4 +1,4 @@
-import { HeaderMenu } from '@/components/HeaderMenu'
+// import { HeaderMenu } from '@/components/HeaderMenu'
 import styles from './Header.module.scss'
 
 export function Header() {
@@ -9,7 +9,7 @@ export function Header() {
         <p className={styles.headerSubtitle}>Manage your customer relationships effectively</p>
       </div>
       <div className={styles.headerActions}>
-        <HeaderMenu />
+        {/* <HeaderMenu /> */}
       </div>
     </header>
   )

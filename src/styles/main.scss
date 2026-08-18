@@ -1,0 +1,64 @@
+/* Theme tokens (CSS variables) and base styles. */
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-border: #e2e6ee;
+  --color-text: #1f2733;
+  --color-text-muted: #6b7480;
+  --color-primary: #4f6ef7;
+  --color-primary-hover: #3f5be0;
+  --color-danger: #e5484d;
+  --color-danger-hover: #cf3438;
+  --color-success: #2f9e63;
+  --color-warning: #d9822b;
+
+  --status-todo: #6b7480;
+  --status-in_progress: #d9822b;
+  --status-done: #2f9e63;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 1px 3px rgba(20, 30, 55, 0.08), 0 4px 16px rgba(20, 30, 55, 0.06);
+  --shadow-lg: 0 12px 40px rgba(20, 30, 55, 0.18);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  --font: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+#app {
+  min-height: 100vh;
+}
