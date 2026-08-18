@@ -10,9 +10,9 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { useDebouncedValue } from '@/hooks/useDebouncedValue'
 import { selectProjects } from '@/store/selectors/projectSelectors'
 import { addProject, deleteProject, updateProject } from '@/store/slices/projectsSlice'
-import { PATHS } from '@/router'
+import { projectDetailPath } from '@/router'
 import type { Column } from '@/types/Table'
-import type { Project, ProjectFormValues } from '@/types/Project'
+import { toFormValues, type Project, type ProjectFormValues } from '@/types/Project'
 import { STATUS_FILTER_ALL, type SortOption } from '@/types/Sort'
 import { formatDate } from '@/utils/formatDate'
 import styles from './ProjectsPage.module.scss'
@@ -172,7 +172,7 @@ export const ProjectsPage = () => {
         columns={columns}
         caption="List of projects"
         getRowKey={(project) => project.id}
-        onRowClick={(project) => navigate(`${PATHS.PROJECTS}/${project.id}`)}
+        onRowClick={(project) => navigate(projectDetailPath(project.id))}
         emptyState={
           hasProjects ? (
             <EmptyState
@@ -192,7 +192,7 @@ export const ProjectsPage = () => {
 
       <ProjectFormModal
         isOpen={isFormOpen}
-        initialValues={editingProject ?? undefined}
+        initialValues={editingProject ? toFormValues(editingProject) : undefined}
         onSubmit={handleSubmit}
         onClose={() => setIsFormOpen(false)}
       />

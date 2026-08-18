@@ -1,2 +1,2 @@
 export { Router } from './Router'
-export { PATHS } from './path'
+export { PATHS, projectDetailPath } from './path'

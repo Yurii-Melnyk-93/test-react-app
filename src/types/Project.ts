@@ -20,5 +20,12 @@ export type Project = {
 /** The fields a user fills in — `id` and `createdAt` are generated. */
 export type ProjectFormValues = Pick<Project, 'name' | 'description' | 'status'>
 
+/** Strips the generated fields so a project can seed the edit form. */
+export const toFormValues = ({ name, description, status }: Project): ProjectFormValues => ({
+  name,
+  description,
+  status,
+})
+
 export const isProjectStatus = (value: unknown): value is ProjectStatus =>
   PROJECT_STATUSES.includes(value as ProjectStatus)

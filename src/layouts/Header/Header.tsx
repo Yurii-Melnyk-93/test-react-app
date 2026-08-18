@@ -1,16 +1,25 @@
-// import { HeaderMenu } from '@/components/HeaderMenu'
+import { NavLink } from 'react-router-dom'
+import { PATHS } from '@/router'
 import styles from './Header.module.scss'
 
-export function Header() {
-  return (
-    <header className={styles.header}>
-      <div className={styles.headerContent}>
-        <h1 className={styles.headerTitle}>My CRM</h1>
-        <p className={styles.headerSubtitle}>Manage your customer relationships effectively</p>
-      </div>
-      <div className={styles.headerActions}>
-        {/* <HeaderMenu /> */}
-      </div>
-    </header>
-  )
-}
+export const Header = () => (
+  <header className={styles.header}>
+    <div className={styles.inner}>
+      <NavLink to={PATHS.PROJECTS} className={styles.brand}>
+        <span className={styles.mark} aria-hidden="true">
+          PM
+        </span>
+        Project Manager
+      </NavLink>
+
+      <nav aria-label="Main">
+        <NavLink
+          to={PATHS.PROJECTS}
+          className={({ isActive }) => (isActive ? `${styles.link} ${styles.active}` : styles.link)}
+        >
+          Projects
+        </NavLink>
+      </nav>
+    </div>
+  </header>
+)
