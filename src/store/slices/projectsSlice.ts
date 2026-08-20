@@ -28,10 +28,7 @@ const projectsSlice = createSlice({
       }),
     },
 
-    updateProject: (
-      state,
-      action: PayloadAction<{ id: string; values: ProjectFormValues }>,
-    ) => {
+    updateProject: (state, action: PayloadAction<{ id: string; values: ProjectFormValues }>) => {
       const { id, values } = action.payload
       const project = state.items.find((item) => item.id === id)
 

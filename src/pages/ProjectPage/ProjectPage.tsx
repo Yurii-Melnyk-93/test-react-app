@@ -22,7 +22,12 @@ export const ProjectPage = () => {
 
   // An unknown id is a wrong URL, not an error state — reuse the 404 page.
   if (!project) {
-    return <NotFoundPage title="Project not found" message="This project does not exist or was deleted." />
+    return (
+      <NotFoundPage
+        title="Project not found"
+        message="This project does not exist or was deleted."
+      />
+    )
   }
 
   const handleUpdate = (values: ProjectFormValues) => {

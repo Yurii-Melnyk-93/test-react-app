@@ -1,10 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { FormField } from '@/components/ui'
-import {
-  PROJECT_STATUSES,
-  PROJECT_STATUS_LABELS,
-  type ProjectFormValues,
-} from '@/types/Project'
+import { PROJECT_STATUSES, PROJECT_STATUS_LABELS, type ProjectFormValues } from '@/types/Project'
 import styles from './ProjectForm.module.scss'
 
 type ProjectFormProps = {

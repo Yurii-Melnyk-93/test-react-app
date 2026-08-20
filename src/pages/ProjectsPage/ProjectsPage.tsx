@@ -2,10 +2,7 @@ import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button, ConfirmDialog, EmptyState, StatusBadge, Table } from '@/components/ui'
 import { ProjectFormModal } from '@/components/projects/ProjectFormModal'
-import {
-  ProjectsToolbar,
-  type StatusFilter,
-} from '@/components/projects/ProjectsToolbar'
+import { ProjectsToolbar, type StatusFilter } from '@/components/projects/ProjectsToolbar'
 import { useAppDispatch, useAppSelector } from '@/hooks/redux'
 import { useDebouncedValue } from '@/hooks/useDebouncedValue'
 import { selectProjects } from '@/store/selectors/projectSelectors'
