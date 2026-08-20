@@ -6,7 +6,9 @@ import { NotFoundPage } from '@/pages/NotFoundPage'
 import { PATHS } from './path'
 
 export const Router = () => (
-  <BrowserRouter>
+  // Vite's BASE_URL is '/' locally and the repository subpath on GitHub Pages,
+  // so the same build works in both places.
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
     <Routes>
       <Route element={<DefaultLayout />}>
         <Route path={PATHS.HOME} element={<Navigate to={PATHS.PROJECTS} replace />} />
