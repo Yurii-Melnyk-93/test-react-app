@@ -5,9 +5,9 @@ projects, search and filter them, and open a details page for any of them. State
 Toolkit and is persisted to `localStorage`, so the app has no backend and keeps your data between
 reloads.
 
-[**Live demo**](https://yurii-melnyk-93.github.io/test-reasct-app/)
+[**Live demo**](https://yurii-melnyk-93.github.io/test-react-app/)
 
-[![CI](https://github.com/Yurii-Melnyk-93/test-reasct-app/actions/workflows/ci.yml/badge.svg)](https://github.com/Yurii-Melnyk-93/test-reasct-app/actions/workflows/ci.yml)
+[![CI](https://github.com/Yurii-Melnyk-93/test-react-app/actions/workflows/ci.yml/badge.svg)](https://github.com/Yurii-Melnyk-93/test-react-app/actions/workflows/ci.yml)
 
 ## Features
 
