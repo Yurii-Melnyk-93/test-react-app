@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# Project Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small project tracker built while working through a React course: create, edit and delete
+projects, search and filter them, and open a details page for any of them. State lives in Redux
+Toolkit and is persisted to `localStorage`, so the app has no backend and keeps your data between
+reloads.
 
-Currently, two official plugins are available:
+[**Live demo**](https://yurii-melnyk-93.github.io/test-reasct-app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[![CI](https://github.com/Yurii-Melnyk-93/test-reasct-app/actions/workflows/ci.yml/badge.svg)](https://github.com/Yurii-Melnyk-93/test-reasct-app/actions/workflows/ci.yml)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Projects CRUD** — create, edit and delete projects, each with a name, description and status
+  (`To do` / `In progress` / `Done`).
+- **Search, filter and sort** — debounced search over name and description, a status filter, and
+  sorting by newest, oldest or name.
+- **Details page** — `/projects/:id` with the full project card; an unknown id renders the 404 page
+  instead of an error.
+- **Persistence** — every change is written to `localStorage`, debounced so a burst of edits writes
+  once. Stored data is validated on load, so a stale or hand-edited payload cannot break the app.
+- **Accessible UI kit** — labelled form fields with `aria-invalid`, a modal that traps focus, closes
+  on `Escape` and locks body scroll, and confirmation dialogs for destructive actions.
 
-## Expanding the ESLint configuration
+## Tech stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+React 19 · TypeScript (strict) · Vite · Redux Toolkit · React Router · React Hook Form · SCSS
+modules · Vitest + Testing Library
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The dev server prints a local URL, by default http://localhost:5173.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Script                  | What it does                                        |
+| ----------------------- | --------------------------------------------------- |
+| `npm run dev`           | Start the Vite dev server                           |
+| `npm run build`         | Typecheck and build for production into `dist/`     |
+| `npm run preview`       | Serve the production build locally                  |
+| `npm test`              | Run the test suite once                             |
+| `npm run test:watch`    | Run the tests in watch mode                         |
+| `npm run test:coverage` | Run the tests with a coverage report and thresholds |
+| `npm run lint`          | Run ESLint                                          |
+| `npm run typecheck`     | Run the TypeScript compiler without emitting        |
+| `npm run format`        | Format the sources with Prettier                    |
+| `npm run format:check`  | Fail if anything is unformatted                     |
+
+## Project structure
+
 ```
+src/
+  components/    ui kit (Button, Modal, Table, …) and project-specific components
+  hooks/         typed redux hooks, useDebouncedValue, useClickOutside
+  layouts/       page shell: header, footer, default layout
+  pages/         ProjectsPage, ProjectPage, NotFoundPage
+  router/        routes and path helpers
+  store/         redux store, projects slice, selectors, localStorage persistence
+  test/          vitest setup and the renderWithProviders helper
+  types/         Project and sorting types
+  utils/         debounce, date formatting
+```
+
+## Testing
+
+Vitest runs in a jsdom environment with Testing Library. Tests cover the slice reducers, the
+persistence layer including its untrusted-data paths, the hooks, the modal's accessibility
+behaviour, and the page flows (search, filter, sort, edit, delete). `npm run test:coverage`
+enforces coverage thresholds, so a regression fails the run.
+
+## Quality checks
+
+A husky pre-commit hook formats and lints staged files through lint-staged and then typechecks.
+The same checks plus the production build run in GitHub Actions on every push and pull request,
+and `main` deploys to GitHub Pages.
