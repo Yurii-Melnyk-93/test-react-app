@@ -29,3 +29,6 @@ dist
 .env
 .env.local
 *.log
+
+# Test coverage output
+coverage
